@@ -35,6 +35,7 @@ pipeline {
         // ── 3. BİRİM TESTLERİ ──────────────────────────────────
         stage('Unit Tests') {
             steps {
+                sh 'pip install pytest-cov'
                 sh '''
                     . venv/bin/activate
                     pytest tests/test_app.py \
