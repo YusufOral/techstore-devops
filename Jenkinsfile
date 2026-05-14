@@ -145,7 +145,7 @@ pipeline {
                     fi
 
                     # Ana sayfa kontrol
-                    STATUS2=$(curl -s -o /dev/null -w "%{http_code}" host.docker.internal:5000)
+                    STATUS2=$(curl -s -o /dev/null -w "%{http_code}" http://host.docker.internal:5000)
                     if [ "$STATUS2" != "200" ]; then
                         echo "❌ Ana sayfa erişilemiyor! HTTP: $STATUS2"
                         exit 1
