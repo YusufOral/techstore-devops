@@ -37,8 +37,8 @@ pipeline {
             steps {
                 // Sanal ortamdaki pip'i kullanarak yükleme yapıyoruz
         sh './venv/bin/pip install pytest-cov' 
-        // Testi de sanal ortamdaki pytest ile çalıştırıyoruz
-        sh './venv/bin/pytest tests/test_app.py -v --tb=short --junit-xml=test-results/unit-tests.xml --cov=app --cov-report=xml:coverage.xml --cov-report=term-missing'
+        sh 'mkdir -p test-results'
+        sh 'PYTHONPATH=. ./venv/bin/pytest tests/test_app.py -v --tb=short --junit-xml=test-results/unit-tests.xml --cov=app --cov-report=xml:coverage.xml --cov-report=term-missing'
             }
             post {
                 always {
